@@ -18,22 +18,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+/*
+for some tap-hold key e.g lt(2, KC_BSPC),
+only enable layer 2 key tap if the tap in and tap out is within hold period (permissive hold)
+
+this is to prevent some keys in layer 2 getting accidentally tapped when quickly resume typing after del is pressed.
+
+For other tap-hold key,
+as long as tap in is within hold period, then treat as hold (hold on other key press)
+*/
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_BSPC):
-            // Immediately select the hold action when another key is tapped.
-            return false;
-        default:
             return true;
+        default:
+            return false;
     }
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_BSPC):
-            return 400;
+            return false;
         default:
-            return 200;
+            return true;
     }
 }
 
