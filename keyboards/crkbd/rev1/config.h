@@ -24,3 +24,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         { 27, 27 }
 #    define SPLIT_TRANSPORT_MIRROR
 #endif
+
+// https://docs.qmk.fm/#/tap_hold?id=hold-on-other-key-press
+#define HOLD_ON_OTHER_KEY_PRESS
+#define QUICK_TAP_TERM 0
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
+#define PERMISSIVE_HOLD_PER_KEY
+#define TAPPING_TERM_PER_KEY
+
+
+// #define QUICK_TAP_TERM_PER_KEY
+// uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case LT(1, KC_SPC):
+//             return 0;
+//         default:
+//             return QUICK_TAP_TERM;
+//     }
+// }
