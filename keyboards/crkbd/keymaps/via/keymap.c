@@ -19,6 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 /*
+This is the part that is commented out:
+ 
 for some tap-hold key e.g lt(2, KC_BSPC),
 only enable layer 2 key tap if the tap in and tap out is within hold period (permissive hold)
 
@@ -28,21 +30,23 @@ For other tap-hold key,
 as long as tap in is within hold period, then treat as hold (hold on other key press)
 */
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(2, KC_BSPC):
-            return true;
-        default:
-            return false;
-    }
+    // switch (keycode) {
+    //     case LT(2, KC_BSPC):
+    //         return true;
+    //     default:
+    //         return false;
+    // }
+    return false;
 }
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(2, KC_BSPC):
-            return false;
-        default:
-            return true;
-    }
+    // switch (keycode) {
+    //     case LT(2, KC_BSPC):
+    //         return false;
+    //     default:
+    //         return true;
+    // }
+    return true;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
